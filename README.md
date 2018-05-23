@@ -1,5 +1,7 @@
 # Detroit SDK for JS
 
+Methods for getting data related to parcels in Detroit including trash pickup dates, building permits, and demolitions. 
+
 ## Version 0.0.1
 
 This library is extremely alpha, does not yet even properly declare dependencies. **beware**.
@@ -18,6 +20,9 @@ client.parcelNumber("1465 Chicago").then(req => console.log(req));
 ---
 
 ### Waste
+
+Get the waste pickup schedule for an address. 
+
 #### params
 - address
 - type client.trashType RECYCLING, TRASH, YARD, ALL, BULK
@@ -28,6 +33,9 @@ client.waste("1465 Chicago Blvd", client.trashType.RECYCLING).then(response => c
 ---
 
 ### Permits
+
+Get building permits issued to an address.
+
 #### params
 - address
 - status ["CLOSED", "OPEN", "EXPIRED", "ALL"] defaults to "OPEN"
@@ -42,12 +50,16 @@ client.permits("555 Fake street", "OPEN").then(req => console.log(req));
 ---
 
 ### Blight
+
+Get blight tickets issued to an address.
+
 ```
 client.blightTickets("1465 Chicago").then(req => console.log(req));
 ```
 ---
 
 ### Demolitions
+
 Demolitions returns an array of demos surrounding the given point.
 The default range is 200 meters if none is supplied.
 Location currently only supports an object with `lat/lon`
