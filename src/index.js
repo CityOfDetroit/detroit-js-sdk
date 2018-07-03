@@ -1,5 +1,6 @@
 const getDetailsFor = require("./utils/getDetailsFor");
 const getDemolitions = require("./utils/getDemolitions");
+const getRetals = require("./utils/getRentals");
 const moment = require("moment");
 
 require("es6-promise").polyfill();
@@ -49,6 +50,11 @@ class DetroitApiClient {
       const long = params.location.long;
       return getDemolitions({ lat: lat, long: long }, range);
     }
+  }
+
+  // Rental information request
+  rentals(request){
+    return getRetals(request);
   }
 
   // Waste defaults to trash.
